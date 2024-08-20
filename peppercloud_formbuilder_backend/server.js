@@ -1,13 +1,20 @@
 const createError = require('http-errors');
-const express = require('express');
+const express = require("express");
+require("dotenv").config({path: ".env"});
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const path = require('path');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const process = require("node:process");
+const {printError, printLog} = require("./utils/ServerUtils");
 
 const server = express();
+
+
+const TAG = "Server.js";
+const SERVER_PORT = process.env.SERVER_PORT;
 
 // view engine setup
 server.set('views', path.join(__dirname, 'views'));
@@ -36,6 +43,19 @@ server.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+function log(...text) {
+  printLog(TAG, ...text);
+}
+
+function logErr(...text) {
+  printError(TAG, ...text);
+}
+
+
+server.listen(SERVER_PORT, () => {
+  log(`Server is running on ${SERVER_PORT}`);
 });
 
 module.exports = server;

@@ -86,14 +86,19 @@ This project is a full-stack MERN application that allows users to create, edit,
 
 # Project Images
 
+1. Project Logo
 ![Project Logo](./peppercloud_formbuilder_frontend/public/logo512.png)
 
+2.Home Page
 ![Home Page](./project_images/forms_page_987yr54e.png)
 
+3. Add Form Page
 ![Add Form Page](./project_images/add_form_page_df43e4rfde.png)
 
+4. Edit Form Page
 ![Edit Form Page](./project_images/add_form_page_df43e4rfde.png)
 
+5. View/Submit Form Page
 ![View/Submit Form Page](./project_images/view_form_page_gtr4e3wsdfgbhgfda.png)
 
 

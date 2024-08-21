@@ -4,7 +4,7 @@
   "private": true,
   "author": "Sunil Choudhary",
   "description": "This project is a full-stack MERN application that allows users to create, edit, view, and manage forms. The application will be built using React.js for the frontend, Node.js with Express.js for the backend, MongoDB for the database, and will be deployed using Netlify (frontend), Render (backend), and MongoDB Atlas (cloud database).",
-  "proxy": "http://localhost:8030",
+  "proxyx": "http://localhost:8030",
   "scripts": {
     "start": "set PORT=3030 && react-scripts start",
     "build": "react-scripts build",
@@ -22,6 +22,8 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "cjs-loader": "^0.1.0",
     "classnames": "^2.3.2",
     "i": "^0.3.7",

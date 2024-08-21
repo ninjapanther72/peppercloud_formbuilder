@@ -1,23 +1,12 @@
-// const process = require('node:process');
-// require("dotenv").config({path: "../.env"});
-
-const AppName = "PepperCloud Form Builder";
-const DefStr = "";
-const DefStrNA = "N/A";
-const DB_DATE_FORMAT = 'YYYY-MM-DD HH:mm:ss';
-const ID_LEN= 25;
-const DebugOn = true;
-const IsProd = false;
-
-const AllowedFrontendUrls = [
-    'http://localhost:3030',
-    IsProd && 'https://peppercloud-formbuilder.netlify.app/',
-];
-
-
+export const AppName = "PepperCloud Form Builder";
+export const AppDateFormat = "DD-MMM-YYYY, hh:mm A";
+export const THEME = "primary";
+export const DebugOn = true;
+export const IsProd = false;
+export const BaseReqUrl = IsProd ? "https://peppercloud-formbuilder-backend.onrender.com" : "http://localhost:8030";
 
 //--------------Backend-Frontend common fields start-------------------------------
-const Modules = {
+export const Modules = {
     Home: "Home",
     Forms: "Forms",
     FormQuestions: "Form Questions",
@@ -26,18 +15,18 @@ const Modules = {
     FormView: "View Form",
 };
 
-const ModuleRouteUrls = {
+export const ModuleRouteUrls = {
     [Modules.Home]: '/',
 };
 
-const GenRouteUrls = {
+export const GenRouteUrls = {
     formCreate: '/form/create',
     formView: '/form/:id',
     formEdit: '/form/:id/edit',
     _404: '*',
 };
 
-const ReqUrls = {
+export const ReqUrls = {
     home__fetchForms: '/home-fetch-forms',
     form__viewPage_submitQResponses: '/form-view-page-submit-q-responses',
     form__viewPage_DeleteForm: '/form-view-page-delete-form',
@@ -46,13 +35,13 @@ const ReqUrls = {
     form__viewPage_submitFormQsAnswers: '/form-view-page-submit-form-qs-answers',
 };
 
-const Keys = {
+export const Keys = {
     theme: 'theme',
     themeValues: 'themeValues',
     browserUrl: 'browserUrl',
 };
 
- const ModuleFieldsData = {
+export const ModuleFieldsData = {
     [Modules.Forms]: {
         //document-fields: _id, form_id, title, description, created_at, updated_at
         _id: {
@@ -94,10 +83,6 @@ const Keys = {
             field: 'form_id',
             title: 'Form Id'
         },
-        questionType: {
-            field: 'question_type',
-            title: 'Question Type'
-        },
         title: {
             field: 'title',
             title: 'Title'
@@ -105,6 +90,10 @@ const Keys = {
         placeholder: {
             field: 'placeholder',
             title: 'Placeholder'
+        },
+        questionType: {
+            field: 'question_type',
+            title: 'Question Type'
         },
         required: {
             field: 'required',
@@ -130,10 +119,19 @@ const Keys = {
 
 };
 
+export const FORM_INPUT_TYPES = {
+    //Email, Text, Password, Number, date
+    email: "EMAIL",
+    text: "TEXT",
+    password: "PASSWORD",
+    number: "NUMBER",
+    date: "DATE",
+};
+
 /**
  * Represents a collection of essential message, error messages, date-formats etc.
  */
-const Messages = {
+export const Messages = {
     invalidCredsMsg: "Invalid credentials!",
     verifyErrMsg: "Verification failed, please try again",
     verifySuccessMsg: "Verification successful, welcome back",
@@ -155,8 +153,7 @@ const Messages = {
     sessionAuthFailed: 'Authentication failed! Please try again :(',
     testDataReceived: 'Data received (for testing only)',
 }
-
-const Constants={
+export const Constants = {
 
     YYYY_MM_DD_DASH: "YYYY-MM-DD",
     YYYY_MMM_DD_DASH: "YYYY-MMM-DD",
@@ -170,60 +167,32 @@ const Constants={
 };
 //--------------Backend-Frontend common fields end-------------------------------
 
-const DbCollections={
-    forms:'forms',
-    formQs:'form_questions',
+export const CssVariant = {
+    primary: 'primary',
+    primaryDark: 'primaryDark',
+    success: 'success',
+    secondary: 'secondary',
+    warning: 'warning',
+    info: 'info',
+    dark: 'dark',
+    light: 'light',
+    danger: 'danger',
+    white: 'white',
 };
-const Patterns = {
-    plainNumber: /^[0-9]*$/,
-    allNumber: /^\-?\d+((\.)\d+)?$/,
-    emailMobText: /^[a-zA-Z\s]*$/, // plainText: /^[a-zA-Z\s]*$/,
-    plainText: /^[a-zA-Z\ ]*$/, // plainText: /^[A-Za-z\s_\-]+$/,
-    /**
-     * One uppercase letter, two digits, three lowercase letters, min-length=8
-     */
-    password: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/,
-    prefix: /^[a-zA-Z\s.\-]+$/,
-
-    // email: /^[a-zA-Z0-9.!#$%&'*+/:?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, // mobile: /^(\+?\d{1,3})?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
-    // mobile: /^\+\d{1,14}-\d{1,}$/,
-    mobile: /^[0-9]*$/,
-    mobileWithCountryCode: /^[\d+ ]{0,14}$/,
-    mobileWithCountryCodeAdvance: /^[+-]?[0-9]{10,14}$/, // mobileWithCountryCode: /^(\+\d{1,3}\s)?\d{1,14}$/,
-    pincode: /^[0-9]*$/,
-    skills: /^[a-zA-Z\. \-\,\(\)\#\@\/\n]*$/,
-    file: /^([a-zA-Z]:)?((\/|\\)[^<>:"/\\|?*\n\r]+)+(\.|\/|\\)([^<>:"/\\|?*\n\r]+)*$/,
-    alphaNumeric: /^[a-zA-Z0-9]+$/,
-    url: /^(http(s)?:\/\/)?([w]{3}\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})(\/[a-zA-Z0-9-_#]+)*\/?(\?[a-zA-Z0-9-_#]+=[a-zA-Z0-9-%]+(&[a-zA-Z0-9-_#]+=[a-zA-Z0-9-%]+)*)?$/,
-    imageUrl: /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})(\/[^\s]*)?\.(jpg|jpeg|png|gif|bmp|svg)$/i,
-    fax: /^\+?[0-9\s-]+$/,
-    message: /^[\w\s.,!?@#$%^&*()-+=<>[\]{}|\\/]+$/, // message: /^[\w\s\-.,!@()/&]+$/,
-    experience: /^[\w\s\-_.&]+$/,
-    unicodeStr: /^[\w\s,()&\-\/.\\]+$/,
-    address: /^[a-zA-Z0-9 ,.\-_/\\]+$/,
-    msgAdvance: /[^a-zA-Z0-9\s\.,?!:;'"()-]/g,
-    commaDashUnderscoreSpaceStr: /^[a-zA-Z\s, -]+$/, // message: /^[a-zA-Z0-9\. \-\,\(\)\#\@\/\n]*$/,
-};
-
-
-module.exports = {
-    DB_DATE_FORMAT,
-    IsProd,
-    AppName,
-    ID_LEN,
-    Modules,
-    ModuleRouteUrls,
-    DefStr,
-    GenRouteUrls,
-    DefStrNA,
-    DebugOn,
-    Messages,
-    Patterns,
-    Constants,
-    ReqUrls,
-    ModuleFieldsData,
-    Keys,
-    DbCollections,
-    AllowedFrontendUrls,
+export const FsVarVariant = {
+    XS: "var(--fs-xs)",
+    MD_XS: "var(--fs-md-xs)",
+    SM: "var(--fs-sm)",
+    MD_SM: "var(--fs-md-sm)",
+    NORMAL: "var(--fs-normal)",
+    MD: "var(--fs-md)",
+    SM_MD: "var(--fs-sm-md)",
+    MD_LG: "var(--fs-md-lg)",
+    LG: "var(--fs-lg)",
+    XL: "var(--fs-xl)",
+    XXL: "var(--fs-xxl)",
+    XXXL: "var(--fs-xxxl)",
+    XXXXL: "var(--fs-xxxxl)",
+    XXXXXL: "var(--fs-xxxxxl)",
+    XXXXXXL: "var(--fs-xxxxxxl)",
 };

@@ -16,12 +16,25 @@ const {DbHandler} = require("./DbHandler");
 
 const server = express();
 
-// Enable CORS for all routes
-server.use(cors({
-    // origin: true
-    origin: AllowedFrontendUrls,
-    credentials: true,
-}));
+// Enable CORS for specific routes
+// server.use(cors({
+//     // origin: true
+//     origin: AllowedFrontendUrls,
+//     // credentials: true,
+// }));
+
+
+const corsOptions = {
+    origin: (origin, callback) => {
+        if (!origin || AllowedFrontendUrls.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+};
+server.use(cors(corsOptions));
+
 
 // Parse request of content-type-application/x-www-form-urlencoded
 server.use(bodyParser.json({limit: "50mb"}));
@@ -73,7 +86,7 @@ server.post(ReqUrls.home__fetchForms, async (req, res) => {
 server.post(ReqUrls.form__EditPage_fetchEditData, async (req, res) => {
     const fun = 'form__EditPage_fetchEditData:';
     try {
-        const {formData,success, message} = await DbHandler.form__EditPage_fetchEditData(req.body);
+        const {formData, success, message} = await DbHandler.form__EditPage_fetchEditData(req.body);
         sendResponse({res: res, data: formData, success: success, msg: message});
     } catch (e) {
         logErr(fun, e);
@@ -84,7 +97,7 @@ server.post(ReqUrls.form__EditPage_fetchEditData, async (req, res) => {
 server.post(ReqUrls.form__viewPage_DeleteForm, async (req, res) => {
     const fun = 'form__viewPage_DeleteForm:';
     try {
-        await DbHandler.form__viewPage_DeleteForm(req.body,res);
+        await DbHandler.form__viewPage_DeleteForm(req.body, res);
     } catch (e) {
         logErr(fun, e);
         sendResponse({res: res, msg: INTERNAL_SERVER_ERR_MSG, errorMsg: e});
@@ -94,7 +107,7 @@ server.post(ReqUrls.form__viewPage_DeleteForm, async (req, res) => {
 server.post(ReqUrls.form__viewPage_submitFormQsAnswers, async (req, res) => {
     const fun = 'form__viewPage_submitFormQsAnswers:';
     try {
-        await DbHandler.form__viewPage_submitFormQsAnswers(req.body,res);
+        await DbHandler.form__viewPage_submitFormQsAnswers(req.body, res);
     } catch (e) {
         logErr(fun, e);
         sendResponse({res: res, msg: INTERNAL_SERVER_ERR_MSG, errorMsg: e});
@@ -106,7 +119,7 @@ server.post(ReqUrls.form__viewPage_submitFormQsAnswers, async (req, res) => {
 server.post(ReqUrls.form__EditPage_fetchEditData, async (req, res) => {
     const fun = 'form__EditPage_fetchEditData:';
     try {
-        const {formData,success, message} = await DbHandler.form__EditPage_fetchEditData(req.body);
+        const {formData, success, message} = await DbHandler.form__EditPage_fetchEditData(req.body);
         sendResponse({res: res, data: formData, success: success, msg: message});
     } catch (e) {
         logErr(fun, e);
@@ -117,7 +130,7 @@ server.post(ReqUrls.form__EditPage_fetchEditData, async (req, res) => {
 server.post(ReqUrls.form__EditPage_submitData, async (req, res) => {
     const fun = 'form__EditPage_submitData:';
     try {
-        await DbHandler.form__EditPage_submitData(req.body,res);
+        await DbHandler.form__EditPage_submitData(req.body, res);
     } catch (e) {
         logErr(fun, e);
         sendResponse({res: res, msg: INTERNAL_SERVER_ERR_MSG, errorMsg: e});

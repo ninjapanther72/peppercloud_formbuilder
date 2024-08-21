@@ -2,7 +2,8 @@
 
 ## Project Overview
 
-This is a full-stack MERN application that allows users to create, edit, view, and manage forms. The frontend is built using React.js, the backend using Node.js with Express.js, MongoDB for the database, and the project is deployed using Netlify, Render, and MongoDB Atlas.
+This project is a full-stack MERN application that allows users to create, edit, view, and manage forms. The application will be built using React.js for the frontend, Node.js with Express.js for the backend, MongoDB for the database, and will be deployed using Netlify (frontend), Render (backend), and MongoDB Atlas (cloud database).
+[Netlify demo link](https://peppercloud-formbuilder.netlify.app/)
 
 ## Features
 
@@ -22,39 +23,32 @@ This is a full-stack MERN application that allows users to create, edit, view, a
   - **Database**: MongoDB Atlas
 
 ## Installation
-
-### Frontend
-
-1. Clone the frontend repository:
+1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/form-builder-frontend.git
+    git clone https://github.com/ninjapanther72/peppercloud_formbuilder.git
     cd form-builder-frontend
     ```
-2. Install dependencies:
+
+### Run Frontend
+1. Install dependencies:
     ```bash
     npm install
     ```
-3. Run the development server:
+2. Run the development server:
     ```bash
     npm start
     ```
 
-### Backend
-
-1. Clone the backend repository:
-    ```bash
-    git clone https://github.com/your-username/form-builder-backend.git
-    cd form-builder-backend
-    ```
-2. Install dependencies:
+### Run Backend
+1. Install dependencies:
     ```bash
     npm install
     ```
-3. Set up environment variables in `.env`:
+2. Set up environment variables in `.env`:
     ```env
     MONGO_URI=your-mongodb-uri
     ```
-4. Start the server:
+3. Start the server:
     ```bash
     node server.js
     ```

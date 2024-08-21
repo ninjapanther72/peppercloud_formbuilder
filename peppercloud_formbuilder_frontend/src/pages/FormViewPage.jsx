@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {AppInterface, Button, Checkbox, Flexbox, GridBox, HorDiv, Input, Label, LoadingPanel, Section} from "../components";
 import {
-    checkNullArr,
+    checkNullArr, checkNullJson,
     checkNullStr,
     createTimeout, focusFormIdElement,
     formatDate,
@@ -142,7 +142,7 @@ const FormViewPage = React.memo(() => {
                                             showMsgOverride={false}
                                             onChange={(e) => {
                                                 const value = e.target.value;
-                                                log('questions.Input.onChange.qIndex:',qIndex,'value:',value);
+                                                log('questions.Input.onChange.qIndex:', qIndex, 'value:', value);
                                                 inputList_updateSingleField(mf_q.answer, value, qIndex);
                                             }}
                                         />
@@ -288,7 +288,7 @@ const FormViewPage = React.memo(() => {
                 verified = true;
             }
         }
-        if (!verified) {
+        if (!verified && checkNullJson(field)) {
             const colTitle = field.title;
             // log("checkRequiredFields.!verified.field:", field, 'idToFocus:', field.field);
             panelMsg(`'${colTitle}' field is required!`, CssVariant.danger);

@@ -5,15 +5,15 @@ const AppName = "PepperCloud Form Builder";
 const DefStr = "";
 const DefStrNA = "N/A";
 const DB_DATE_FORMAT = 'YYYY-MM-DD HH:mm:ss';
-const ID_LEN= 25;
+const ID_LEN = 25;
 const DebugOn = true;
-const IsProd = false;
+const IsProd = true;
 
 const AllowedFrontendUrls = [
     'http://localhost:3030',
-    IsProd && 'https://peppercloud-formbuilder.netlify.app/',
+    'https://peppercloud-formbuilder.netlify.app/',
+    'https://peppercloud-formbuilder.netlify.app',
 ];
-
 
 
 //--------------Backend-Frontend common fields start-------------------------------
@@ -52,7 +52,7 @@ const Keys = {
     browserUrl: 'browserUrl',
 };
 
- const ModuleFieldsData = {
+const ModuleFieldsData = {
     [Modules.Forms]: {
         //document-fields: _id, form_id, title, description, created_at, updated_at
         _id: {
@@ -156,7 +156,7 @@ const Messages = {
     testDataReceived: 'Data received (for testing only)',
 }
 
-const Constants={
+const Constants = {
 
     YYYY_MM_DD_DASH: "YYYY-MM-DD",
     YYYY_MMM_DD_DASH: "YYYY-MMM-DD",
@@ -170,9 +170,9 @@ const Constants={
 };
 //--------------Backend-Frontend common fields end-------------------------------
 
-const DbCollections={
-    forms:'forms',
-    formQs:'form_questions',
+const DbCollections = {
+    forms: 'forms',
+    formQs: 'form_questions',
 };
 const Patterns = {
     plainNumber: /^[0-9]*$/,

@@ -2,7 +2,7 @@ export const AppName = "PepperCloud Form Builder";
 export const AppDateFormat = "DD-MMM-YYYY, hh:mm A";
 export const THEME = "primary";
 export const DebugOn = true;
-export const IsProd = false;
+export const IsProd = true;
 export const BaseReqUrl = IsProd ? "https://peppercloud-formbuilder-backend.onrender.com" : "http://localhost:8030";
 
 //--------------Backend-Frontend common fields start-------------------------------

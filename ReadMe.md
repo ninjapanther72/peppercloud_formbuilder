@@ -9,12 +9,11 @@ This project is a full-stack MERN application that allows users to create, edit,
 
 - Create, edit, and view forms.
 - Supports various input types: Email, Text, Password, Number, Date.
-- Drag and drop functionality for arranging inputs (optional).
 - Group inputs into sections (optional).
 
 ## Technologies Used
 
-- **Frontend**: React.js, React Router, Drag and Drop (no third-party library)
+- **Frontend**: React.js, React Router
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB Atlas
 - **Deployment**:
@@ -83,6 +82,20 @@ This project is a full-stack MERN application that allows users to create, edit,
 2. Click "Create Form" to build a new form.
 3. Edit and view forms using the respective pages.
 4. Use drag-and-drop to rearrange inputs (optional).
+
+
+# Project Images
+
+![Project Logo](./peppercloud_formbuilder_frontend/public/logo512.png)
+
+![Home Page](./project_images/forms_page_987yr54e.png)
+
+![Add Form Page](./project_images/add_form_page_df43e4rfde.png)
+
+![Edit Form Page](./project_images/add_form_page_df43e4rfde.png)
+
+![View/Submit Form Page](./project_images/view_form_page_gtr4e3wsdfgbhgfda.png)
+
 
 ## License
 

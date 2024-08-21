@@ -349,7 +349,7 @@ dbMethods.form__viewPage_submitFormQsAnswers = async (reqBody, res) => {
     const fun = 'form__viewPage_submitFormQsAnswers:';
     const formData = reqBody.formData;
     const recordId = getDefJsonValue(reqBody, 'recordId');
-    storeJsonDataInTempFile({fun, reqBody});
+    // storeJsonDataInTempFile({fun, reqBody});
     try {
         await checkDbConn();
         const mf_qs = ModuleFieldsData[Modules.FormQuestions];//id, formId, questionType, title, placeholder, required, order, answer, takenAt

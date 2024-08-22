@@ -251,19 +251,21 @@ const Input = React.memo(({
 
 
                     {/*Password toggle*/}
-                    {(isTypePw() && isBoolTrue(showPasswordToggle)) && <Button
-                        className={`shadow-none p-1 circular text-dark ${controlClassName} `}
-                        iconClass={`text-${controlColor} ${showPassword ? 'bi bi-eye ' : 'bi bi-eye-slash'}`}
-                        width={controlSize}
-                        height={controlSize}
-                        fontSize={"15px"}
-                        disabled={disabled}
-                        // tooltip={showPassword?"Hide":"Show"}
-                        style={{
-                            margin: "1.5px", marginLeft: "-" + multSize(controlSize, 1.2), ...controlStyle
-                        }}
-                        onClick={handleTogglePassword}
-                    />}
+                    {(isTypePw() && isBoolTrue(showPasswordToggle)) &&<div className={''}style={{marginLeft:'-1.6rem'}}>
+                        <Button
+                            className={`shadow-none p-1 circular text-dark bt-t ${controlClassName} `}
+                            iconClass={`text-${controlColor} ${showPassword ? 'bi bi-eye ' : 'bi bi-eye-slash'}`}
+                            width={controlSize}
+                            height={controlSize}
+                            fontSize={"15px"}
+                            disabled={disabled}
+                            variant={'transparent'}
+                            // tooltip={showPassword?"Hide":"Show"}
+                            style={{
+                            }}
+                            onClick={handleTogglePassword}
+                        />
+                    </div>}
                 </div>
             </div>
 

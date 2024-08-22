@@ -303,7 +303,7 @@ const FormAddEditPage = React.memo(({updateOnly = false}) => {
                                         const nextIndex = getArrLen(updatedList) + 1;
 
                                         const DEFAULT_DATA = {
-                                            [mf_q.title.field]: `Label goes here: ${nextIndex}`,
+                                            [mf_q.title.field]: `Question goes here: ${nextIndex}`,
                                             [mf_q.placeholder.field]: `Placeholder goes here: ${nextIndex}`,
                                             // [mf_q.questionType.field]: FORM_INPUT_TYPES.number,
                                             [mf_q.questionType.field]: Object.values(FORM_INPUT_TYPES)[randomInt(0, Object.values(FORM_INPUT_TYPES).length - 1)],

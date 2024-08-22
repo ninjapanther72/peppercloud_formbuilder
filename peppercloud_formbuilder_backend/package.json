@@ -7,9 +7,7 @@
     "npm-audit-fix": "npm audit fix",
     "npm-audit-fix-force": "npm audit fix --force",
     "server-auto-simple": "nodemon server.js",
-    "server-auto": "nodemon server.js --ignore public/ --ignore test_server.js",
-    "build": "react-scripts build",
-    "backend-build": "react-scripts build"
+    "server-auto": "nodemon server.js --ignore public/ --ignore test_server.js"
   },
   "dependencies": {
     "http-errors": "~1.6.3",

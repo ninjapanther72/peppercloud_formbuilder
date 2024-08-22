@@ -11,7 +11,7 @@ const Anchor = React.memo(({
                                color = "black",
                                overflow = "",
                                fontSize = "",
-                               hoverColor = 'var(--primaryBlue)',
+                               hoverColor = 'var(--primary)',
                                href,
                                to,
                                rel,

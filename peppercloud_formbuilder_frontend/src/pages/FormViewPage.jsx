@@ -170,7 +170,7 @@ const FormViewPage = React.memo(() => {
                                 variant={'primary'}
                                 text={isFieldTrue(Fields.submitBtn_AsLoading) ? 'Submitting...' : 'Submit Feedback'}
                                 asLoading={isFieldTrue(Fields.submitBtn_AsLoading)}
-                                disabled={isFieldTrue(Fields.submitBtn_disabled)}
+                                disabled={isFieldTrue(Fields.submitBtn_disabled)||!checkNullArr(getFormField(mf_form.questions))}
                                 onClick={handleFormSubmit}
                         />
                     </div>

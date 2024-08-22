@@ -7,24 +7,17 @@ const {
     parseInteger,
     getDefJsonValue,
     checkNullJson,
-    boolToBinary,
     printLog, printError,
-    isArr,
-    getNestedArrIndexValue,
-    convertDateIntoTimestamp,
-    getDefValueStr, isJsonValueTrue, jsonToStr, getDefValue, checkNull, generateUniqueString, getArrLen, storeJsonDataInTempFile, sortJsonList, sendResponse,
+    isJsonValueTrue, jsonToStr, checkNull, generateUniqueString, getArrLen, sortJsonList, sendResponse,
     dropArrEmptyValues,
 } = require("./utils/ServerUtils");
 const {Messages, DbCollections, ModuleFieldsData, Modules, ID_LEN} = require("./config/ServerConfig");
 const {} = require("./utils/ServerUtils");
-const {MongoClient, Db} = require('mongodb');
+const {Db} = require('mongodb');
 
 const TAG = 'DbHandler.js';
 
 const INTERNAL_SERVER_ERROR = Messages.serverErrorMsg;
-const INTERNAL_SERVER_ERR_MSG = Messages.serverErrorMsg;
-const FETCH_SUCCESS_MSG = Messages.fetchSuccessMsg;
-const FETCH_ERROR_MSG = Messages.fetchErrMsg;
 const UPLOAD_SUCCESS_MSG = Messages.uploadSuccessMsg;
 const UPLOAD_ERROR_MSG = Messages.uploadErrMsg;
 const RECORD_DELETE_MSG = Messages.recordDelete;
@@ -39,12 +32,6 @@ const dbMethods = {};
 let dbConn = null;
 
 /**
- * Initialize a variable to store the MongoClient db-connection.
- * @type {MongoClient}
- */
-let dbClient = null;
-
-/**
  * Initializes the {@link Db} instance if it hasn't been initialized already.
  *
  * @returns {Db} The {@link Db} instance.
@@ -52,9 +39,8 @@ let dbClient = null;
 async function checkDbConn() {
     if (!checkNull(dbConn)) {
         log('checkDbConn: connection established');
-        const {db, client} = await getMongoDbCon();
+        const {db} = await getMongoDbCon();
         dbConn = db;
-        dbClient = client;
     }
     return dbConn;
 }

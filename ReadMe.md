@@ -111,9 +111,9 @@ This project is a full-stack MERN application that allows users to create, edit,
 ## Database files
 
 1. Forms data json-file
-[](./db/Forms.json)
+[Forms data json-file](./db/Forms.json)
 2. Form-questions data json-file
-[](./db/Forms_qs.json)
+[Form-questions data json-file](./db/Forms_qs.jsson)
 
 
 ## License

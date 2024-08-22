@@ -35,7 +35,9 @@ const FormsListPage = React.memo(() => {
         currRecord_deleteBtn_AsLoading: 'currRecord_deleteBtn_AsLoading',
         currRecord_deleteBtn_disabled: 'currRecord_deleteBtn_disabled',
     };
-    const [fieldsData, setFieldsData] = useState({});
+    const [fieldsData, setFieldsData] = useState({
+        [Fields.isDataLoading]:true,
+    });
 
     useEffect(() => {
         fetchFormsData();

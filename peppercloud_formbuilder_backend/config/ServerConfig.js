@@ -11,8 +11,7 @@ const IsProd = true;
 
 const AllowedFrontendUrls = [
     'http://localhost:3030',
-    'https://peppercloud-formbuilder.netlify.app/',
-    'https://peppercloud-formbuilder.netlify.app',
+    IsProd && 'https://peppercloud-formbuilder.netlify.app',
 ];
 
 

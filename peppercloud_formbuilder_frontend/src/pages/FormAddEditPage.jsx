@@ -42,7 +42,9 @@ const FormAddEditPage = React.memo(({updateOnly = false}) => {
         builder_submitBtn_disabled: 'builder_submitBtn_disabled',
     };
 
-    const [fieldsData, setFieldsData] = useState({});
+    const [fieldsData, setFieldsData] = useState({
+        [Fields.isDataLoading]:true,
+    });
     const [formData, setFormData] = useState({});
 
     useEffect(() => {

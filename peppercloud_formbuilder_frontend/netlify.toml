@@ -1,7 +1,12 @@
 [build]
-  base    = "peppercloud_formbuilder_frontend"  # Path to your frontend code
-  publish = "build"  # Directory to publish
-  command = "npm install --force --legacy-peer-deps && npm run build"  # Correct build command
+  base    = "peppercloud_formbuilder_frontend"
+  publish = "build"
+  command = "npm install --force --legacy-peer-deps && npm run build"
 
 [context.production.environment]
   NODE_ENV = "production"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

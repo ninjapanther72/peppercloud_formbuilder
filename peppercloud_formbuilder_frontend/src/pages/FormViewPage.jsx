@@ -41,7 +41,9 @@ const FormViewPage = React.memo(() => {
         submitBtn_disabled: 'submitBtn_disabled',
     };
 
-    const [fieldsData, setFieldsData] = useState({});
+    const [fieldsData, setFieldsData] = useState({
+        [Fields.isDataLoading]:true,
+    });
     const [formData, setFormData] = useState({});
 
     useEffect(() => {

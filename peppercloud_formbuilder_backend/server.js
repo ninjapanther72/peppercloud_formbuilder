@@ -10,7 +10,7 @@ const {
     ReqUrls, Messages, AllowedFrontendUrls,
 } = require("./config/ServerConfig");
 const {
-    printLog, printError, sendResponse,
+    printLog, printError, sendResponse, isValueBool,
 } = require("./utils/ServerUtils");
 const {DbHandler} = require("./DbHandler");
 
@@ -22,11 +22,9 @@ const server = express();
 //     origin: AllowedFrontendUrls,
 //     // credentials: true,
 // }));
-
-
 const corsOptions = {
     origin: (origin, callback) => {
-        if (!origin || AllowedFrontendUrls.includes(origin)) {
+        if (!origin || AllowedFrontendUrls.filter(item => !isValueBool(item)).includes(origin)) {
             callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));

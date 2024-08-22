@@ -87,25 +87,25 @@ This project is a full-stack MERN application that allows users to create, edit,
 # Project Images
 
 1. Project Logo
-![](./peppercloud_formbuilder_frontend/public/logo512.png)
+![Project Logo](./peppercloud_formbuilder_frontend/public/logo512.png)
 
 2. Home Page
-![](./project_images/forms_page_987yr54e.png)
+![Home Page](./project_images/forms_page_987yr54e.png)
 
 3. Add Form Page
-![](./project_images/add_form_page_df43e4rfde.png)
+![Add Form Page](./project_images/add_form_page_df43e4rfde.png)
 
 4. Edit Form Page
-![](./project_images/add_form_page_df43e4rfde.png)
+![Edit Form Page](./project_images/add_form_page_df43e4rfde.png)
 
 5. View/Submit Form Page
-![](./project_images/view_form_page_gtr4e3wsdfgbhgfda.png)
+![View/Submit Form Page](./project_images/view_form_page_gtr4e3wsdfgbhgfda.png)
 
 6. MongoDB Database - Forms Schema
-![](./project_images/pp_db_forms_sdfgt543werf.png)
+![MongoDB Database - Forms Schema](./project_images/pp_db_forms_sdfgt543werf.png)
 
 7. MongoDB Database - Form-Questions Schema
-![](./project_images/pp_db_form_qs_dft543ewrf.png)
+![MongoDB Database - Form-Questions Schema](./project_images/pp_db_form_qs_dft543ewrf.png)
 
 
 ## Database files
@@ -113,7 +113,7 @@ This project is a full-stack MERN application that allows users to create, edit,
 1. Forms data json-file
 [Forms data json-file](./db/Forms.json)
 2. Form-questions data json-file
-[Form-questions data json-file](./db/Forms_qs.jsson)
+[Form-questions data json-file](./db/Forms_qs.json)
 
 
 ## License

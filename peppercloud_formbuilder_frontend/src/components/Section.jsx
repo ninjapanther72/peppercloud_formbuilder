@@ -143,8 +143,8 @@ const Section = React.memo(({
                         /> : <i className={`${titleIcon} ${titleIconClass}`} style={{fontSize: titleIconSize}}/>}</span>}
 
                     {/*title*/}
-                    {checkNullStr(title) &&  <h5 className={`title m-0 py-1 pb-2x pb-1 p-0 jc-${titleAt}x ${titleClassName} d-flex w-auto`}
-                            style={{fontSize: titleSize, color: titleColor, ...titleStyle}}>{title}</h5>}
+                    {checkNullStr(title) && <h5 className={`title m-0 py-1 pb-2x pb-1 p-0 jc-${titleAt}x ${titleClassName} d-flex w-auto`}
+                                                style={{fontSize: titleSize, color: titleColor, ...titleStyle}}>{title}</h5>}
 
                     {titleContent && titleContent}
 

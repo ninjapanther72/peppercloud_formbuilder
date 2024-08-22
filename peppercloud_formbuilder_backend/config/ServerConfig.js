@@ -1,6 +1,3 @@
-// const process = require('node:process');
-// require("dotenv").config({path: "../.env"});
-
 const AppName = "PepperCloud Form Builder";
 const DefStr = "";
 const DefStrNA = "N/A";
@@ -25,17 +22,6 @@ const Modules = {
     FormView: "View Form",
 };
 
-const ModuleRouteUrls = {
-    [Modules.Home]: '/',
-};
-
-const GenRouteUrls = {
-    formCreate: '/form/create',
-    formView: '/form/:id',
-    formEdit: '/form/:id/edit',
-    _404: '*',
-};
-
 const ReqUrls = {
     home__fetchForms: '/home-fetch-forms',
     form__viewPage_submitQResponses: '/form-view-page-submit-q-responses',
@@ -43,12 +29,6 @@ const ReqUrls = {
     form__EditPage_fetchEditData: '/form-edit-page-fetch-edit-data',
     form__EditPage_submitData: '/form-edit-page-submit-data',
     form__viewPage_submitFormQsAnswers: '/form-view-page-submit-form-qs-answers',
-};
-
-const Keys = {
-    theme: 'theme',
-    themeValues: 'themeValues',
-    browserUrl: 'browserUrl',
 };
 
 const ModuleFieldsData = {
@@ -93,10 +73,6 @@ const ModuleFieldsData = {
             field: 'form_id',
             title: 'Form Id'
         },
-        questionType: {
-            field: 'question_type',
-            title: 'Question Type'
-        },
         title: {
             field: 'title',
             title: 'Title'
@@ -104,6 +80,10 @@ const ModuleFieldsData = {
         placeholder: {
             field: 'placeholder',
             title: 'Placeholder'
+        },
+        questionType: {
+            field: 'question_type',
+            title: 'Question Type'
         },
         required: {
             field: 'required',
@@ -127,6 +107,25 @@ const ModuleFieldsData = {
         }
     },
 
+};
+
+const Constants = {
+
+    YYYY_MM_DD_DASH: "YYYY-MM-DD",
+    YYYY_MMM_DD_DASH: "YYYY-MMM-DD",
+    DD_MMM_YYYY_DASH: "DD-MMM-yyyy",
+    DD_MMM_YYYY_DASH_HMSA: "DD-MMM-yyyy hh:mm:ssA",
+    YYYY_MM_DD_DASH_HMS: "YYYY-MM-DD HH:mm:ss",
+    DD_MMM_YYYY_UNDERSCORE: "DD_MMM_yyyy",
+    DD_MMM_YYYY_SLASH: "DD/MMM/yyyy",
+    DD_MM_YYYY_DASH: "DD-MM-YYYY",
+    DD_MM_YYYY_SLASH: "DD/MM/YYYY",
+};
+//--------------Backend-Frontend common fields end-------------------------------
+
+const DbCollections = {
+    forms: 'forms_dummy',
+    formQs: 'form_questions',
 };
 
 /**
@@ -155,74 +154,19 @@ const Messages = {
     testDataReceived: 'Data received (for testing only)',
 }
 
-const Constants = {
-
-    YYYY_MM_DD_DASH: "YYYY-MM-DD",
-    YYYY_MMM_DD_DASH: "YYYY-MMM-DD",
-    DD_MMM_YYYY_DASH: "DD-MMM-yyyy",
-    DD_MMM_YYYY_DASH_HMSA: "DD-MMM-yyyy hh:mm:ssA",
-    YYYY_MM_DD_DASH_HMS: "YYYY-MM-DD HH:mm:ss",
-    DD_MMM_YYYY_UNDERSCORE: "DD_MMM_yyyy",
-    DD_MMM_YYYY_SLASH: "DD/MMM/yyyy",
-    DD_MM_YYYY_DASH: "DD-MM-YYYY",
-    DD_MM_YYYY_SLASH: "DD/MM/YYYY",
-};
-//--------------Backend-Frontend common fields end-------------------------------
-
-const DbCollections = {
-    forms: 'forms',
-    formQs: 'form_questions',
-};
-const Patterns = {
-    plainNumber: /^[0-9]*$/,
-    allNumber: /^\-?\d+((\.)\d+)?$/,
-    emailMobText: /^[a-zA-Z\s]*$/, // plainText: /^[a-zA-Z\s]*$/,
-    plainText: /^[a-zA-Z\ ]*$/, // plainText: /^[A-Za-z\s_\-]+$/,
-    /**
-     * One uppercase letter, two digits, three lowercase letters, min-length=8
-     */
-    password: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/,
-    prefix: /^[a-zA-Z\s.\-]+$/,
-
-    // email: /^[a-zA-Z0-9.!#$%&'*+/:?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, // mobile: /^(\+?\d{1,3})?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
-    // mobile: /^\+\d{1,14}-\d{1,}$/,
-    mobile: /^[0-9]*$/,
-    mobileWithCountryCode: /^[\d+ ]{0,14}$/,
-    mobileWithCountryCodeAdvance: /^[+-]?[0-9]{10,14}$/, // mobileWithCountryCode: /^(\+\d{1,3}\s)?\d{1,14}$/,
-    pincode: /^[0-9]*$/,
-    skills: /^[a-zA-Z\. \-\,\(\)\#\@\/\n]*$/,
-    file: /^([a-zA-Z]:)?((\/|\\)[^<>:"/\\|?*\n\r]+)+(\.|\/|\\)([^<>:"/\\|?*\n\r]+)*$/,
-    alphaNumeric: /^[a-zA-Z0-9]+$/,
-    url: /^(http(s)?:\/\/)?([w]{3}\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})(\/[a-zA-Z0-9-_#]+)*\/?(\?[a-zA-Z0-9-_#]+=[a-zA-Z0-9-%]+(&[a-zA-Z0-9-_#]+=[a-zA-Z0-9-%]+)*)?$/,
-    imageUrl: /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})(\/[^\s]*)?\.(jpg|jpeg|png|gif|bmp|svg)$/i,
-    fax: /^\+?[0-9\s-]+$/,
-    message: /^[\w\s.,!?@#$%^&*()-+=<>[\]{}|\\/]+$/, // message: /^[\w\s\-.,!@()/&]+$/,
-    experience: /^[\w\s\-_.&]+$/,
-    unicodeStr: /^[\w\s,()&\-\/.\\]+$/,
-    address: /^[a-zA-Z0-9 ,.\-_/\\]+$/,
-    msgAdvance: /[^a-zA-Z0-9\s\.,?!:;'"()-]/g,
-    commaDashUnderscoreSpaceStr: /^[a-zA-Z\s, -]+$/, // message: /^[a-zA-Z0-9\. \-\,\(\)\#\@\/\n]*$/,
-};
-
-
 module.exports = {
     DB_DATE_FORMAT,
     IsProd,
     AppName,
     ID_LEN,
     Modules,
-    ModuleRouteUrls,
     DefStr,
-    GenRouteUrls,
     DefStrNA,
     DebugOn,
     Messages,
-    Patterns,
     Constants,
     ReqUrls,
     ModuleFieldsData,
-    Keys,
     DbCollections,
     AllowedFrontendUrls,
 };

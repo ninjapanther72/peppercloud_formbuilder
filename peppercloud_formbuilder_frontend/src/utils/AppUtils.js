@@ -183,6 +183,7 @@ export function formatDate(date = new Date(), format = Constants.YYYY_MM_DD_DASH
 export function checkNull(obj, checkExtra = null) {
     return obj !== undefined && obj + "" !== 'undefined' && obj !== null && obj + "" !== 'null' && (obj + "").toLowerCase() !== 'nan' && obj !== checkExtra
 }
+
 export function randomInt(min = 5, max = 20) {
     return Math.floor(Math.random() * (max - min)) + min;
 }

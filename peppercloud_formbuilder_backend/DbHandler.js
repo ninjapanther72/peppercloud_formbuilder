@@ -140,10 +140,10 @@ dbMethods.home__fetchForms = async () => {
         await executeQuery({
             collection: DbCollections.forms,
             onFetched: (async (fetchedData) => {
-                // fetchedData = await fetchedData;
                 const recordList = await fetchedData;
+                // const recordList=[];
+                // log(fun, 'fetchedData.recordList:', recordList);
                 log(fun, 'fetchedData.recordList.len:', getArrLen(recordList));
-                // log(fun, 'fetchedData[0]:', recordList);
                 const success = checkNullArr(recordList);
                 // storeJsonDataInTempFile({fun, success, recordList});
                 return resolve({recordList, success: success, message: success ? "Forms found." : "No forms found!"});
@@ -373,7 +373,7 @@ dbMethods.form__viewPage_submitFormQsAnswers = async (reqBody, res) => {
 
         //Create bulk-ops to update all docs at once
         const bulkOperations = questions.map((qItem, qIndex) => {
-            const answer =getDefJsonValue(qItem, mf_qs.answer.field);
+            const answer = getDefJsonValue(qItem, mf_qs.answer.field);
             const taken = checkNullStr(answer);
             return {
                 updateOne: {

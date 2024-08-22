@@ -1,21 +1,22 @@
 import React, {useEffect, useState} from 'react';
-import {AppInterface, Button, Checkbox, Flexbox, GridBox, HorDiv, Input, Label, LoadingPanel, Section} from "../components";
+import {AppInterface, Button, GridBox, Input, Label, LoadingSection, Section} from "../components";
 import {
-    checkNullArr, checkNullJson,
+    checkNullArr,
+    checkNullJson,
     checkNullStr,
-    createTimeout, focusFormIdElement,
-    formatDate,
-    getArrLen,
-    getDefJsonValue, getDefValueStr,
-    getFormIdFromBrowserUrl, getJsonValueFromNestedKeys,
+    createTimeout,
+    focusFormIdElement,
+    getDefJsonValue,
+    getDefValueStr,
+    getFormIdFromBrowserUrl,
     isBoolTrue,
     isJsonValueTrue,
-    limitStringWords,
     printError,
-    printLog, randomInt, scrollToTop,
-    sendRequest, trim
+    printLog,
+    scrollToTop,
+    sendRequest
 } from "../utils/AppUtils";
-import {Constants, CssVariant, FORM_INPUT_TYPES, ModuleFieldsData, ModuleRouteUrls, Modules, ReqUrls} from "../config/AppConfig";
+import {CssVariant, IsFormSubmissionDisabled, ModuleFieldsData, ModuleRouteUrls, Modules, ReqUrls} from "../config/AppConfig";
 import {useNavigate} from "react-router-dom";
 
 const FormViewPage = React.memo(() => {
@@ -42,7 +43,7 @@ const FormViewPage = React.memo(() => {
     };
 
     const [fieldsData, setFieldsData] = useState({
-        [Fields.isDataLoading]:true,
+        [Fields.isDataLoading]: true,
     });
     const [formData, setFormData] = useState({});
 
@@ -60,7 +61,7 @@ const FormViewPage = React.memo(() => {
     }, [getField(Fields.panelMsg)]);
 
     return (<AppInterface label={getPageTitle()}>
-        <LoadingPanel
+        <LoadingSection
             success={isFieldTrue(Fields.isDataSuccess)}
             loading={isFieldTrue(Fields.isDataLoading)}
             msg={getField(Fields.dataLoadingMsg)}
@@ -231,38 +232,42 @@ const FormViewPage = React.memo(() => {
         log(fun, 'formData:', formData);
         try {
             if (allChecked) {
-                updateField(Fields.submitBtn_AsLoading, true);
-                updateField(Fields.submitBtn_disabled, true);
+                if (!IsFormSubmissionDisabled) {
+                    updateField(Fields.submitBtn_AsLoading, true);
+                    updateField(Fields.submitBtn_disabled, true);
 
-                sendRequest({
-                    reqUrl: ReqUrls.form__viewPage_submitFormQsAnswers,
-                    reqOptions: {
-                        recordId: getField(Fields.recordId),
-                        formData
-                    },
-                    onFetched: (fetchedData) => {
-                        log(fun, 'fetchedData:', fetchedData);
+                    sendRequest({
+                        reqUrl: ReqUrls.form__viewPage_submitFormQsAnswers,
+                        reqOptions: {
+                            recordId: getField(Fields.recordId),
+                            formData
+                        },
+                        onFetched: (fetchedData) => {
+                            log(fun, 'fetchedData:', fetchedData);
 
-                        const success = isJsonValueTrue(fetchedData, 'success');
-                        const message = getDefJsonValue(fetchedData, 'message');
+                            const success = isJsonValueTrue(fetchedData, 'success');
+                            const message = getDefJsonValue(fetchedData, 'message');
 
-                        updateField(Fields.submitBtn_AsLoading, false);
-                        // updateField(Fields.submitBtn_disabled, false);//For testing purposes only
-                        panelMsg(message, success ? CssVariant.success : CssVariant.danger);
+                            updateField(Fields.submitBtn_AsLoading, false);
+                            // updateField(Fields.submitBtn_disabled, false);//For testing purposes only
+                            panelMsg(message, success ? CssVariant.success : CssVariant.danger);
 
-                        if (success) {
-                            redirectPage();
-                        } else {
+                            if (success) {
+                                redirectPage();
+                            } else {
+                                updateField(Fields.submitBtn_disabled, false);
+                            }
+                        },
+                        onError: (error) => {
+                            logErr(fun, error);
+                            panelMsg("Submission failed, please try again!", CssVariant.danger);
+                            updateField(Fields.submitBtn_AsLoading, false);
                             updateField(Fields.submitBtn_disabled, false);
                         }
-                    },
-                    onError: (error) => {
-                        logErr(fun, error);
-                        panelMsg("Submission failed, please try again!", CssVariant.danger);
-                        updateField(Fields.submitBtn_AsLoading, false);
-                        updateField(Fields.submitBtn_disabled, false);
-                    }
-                });
+                    });
+                } else {
+                    panelMsg("Form submission has been disabled for security reasons!", CssVariant.danger);
+                }
             }
         } catch (error) {
             logErr(fun, error);

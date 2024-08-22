@@ -26,7 +26,7 @@ const AppInterface = React.memo(({
              {...rest}
         >
             {/*Navbar*/}
-            <div className={'position-fixed w-100 bg-white'}style={{top:0,left:0,zIndex:10}}>
+            <div className={'position-fixed w-100 bg-white'} style={{top: 0, left: 0, zIndex: 10}}>
                 <Flexbox className={'px-2 py-2 risen-xs'}>
                     {/*left*/}
                     <Link to={'/'} className={'td-none'}>

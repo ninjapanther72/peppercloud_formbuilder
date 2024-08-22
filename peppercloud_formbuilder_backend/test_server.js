@@ -1,5 +1,5 @@
-const {ModuleFieldsData, Modules,DbCollections} =require ("./config/ServerConfig");
-const {storeJsonDataInTempFile} =require( "./utils/ServerUtils");
+const {ModuleFieldsData, Modules, DbCollections} = require("./config/ServerConfig");
+const {storeJsonDataInTempFile} = require("./utils/ServerUtils");
 
 //col-titles
 // console.log(Object.values(ModuleFieldsData[Modules.Company]).map(item => item.title).join(', '));
@@ -21,7 +21,7 @@ function convertFieldsToJSON(fields) {
     return json;
 }
 
-const form={
+const form = {
     "_id": "64ddf4e1fc13ae24d9000020",
     "form_id": "8765rop09876543456yhgr5",
     "question_type": "email",

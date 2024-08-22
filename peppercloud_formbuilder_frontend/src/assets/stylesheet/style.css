@@ -4486,6 +4486,7 @@ body::-webkit-scrollbar-thumb:hover {
 .form-control:focus {
     border-color: rgba(0, 0, 0, 0.2);
 }
+
 input[type='date'].primary:before {
     color: var(--primary) !important;
 }
@@ -5150,7 +5151,7 @@ input[type='date']:before {
     border-width: 0 0 1.1px 0 !important;
     border-radius: 0 !important;
     /*border-bottom-color: transparent !important;*/
-    border-bottom-color:  var(--primaryBlueDark20) !important;
+    border-bottom-color: var(--primaryBlueDark20) !important;
     padding: 0 0 0 0 !important;
 }
 

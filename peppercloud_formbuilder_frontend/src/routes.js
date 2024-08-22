@@ -1,10 +1,6 @@
-import {
-    _404Page, FormAddEditPage,
-    FormsListPage,
-    FormViewPage,
-} from "./components";
+import {_404Page, FormAddEditPage, FormsListPage, FormViewPage,} from "./components";
 import {GenRouteUrls, ModuleRouteUrls, Modules} from "./config/AppConfig";
-import {getDefValueStr, isBoolTrue} from "./utils/AppUtils.js";
+import {getDefValueStr} from "./utils/AppUtils.js";
 
 const TAG = 'routes.js';
 
@@ -36,8 +32,6 @@ function createRoute(name, component, routeUrl = null) {
 function createInternalPageRoute(name, component, routeUrl) {
     return {
         name: name,
-        // route: (routeUrl + '').replace('?id=', '').replace('?sid=', ''),
-        // route: (routeUrl + '').replace(':id', ''),
         route: routeUrl,
         component: component,
     }

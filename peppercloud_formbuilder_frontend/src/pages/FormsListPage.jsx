@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import {AppInterface, Button, GridBox, Label, LoadingPanel, HeaderLabel, Anchor, Section, Flexbox} from "../components";
+import {Anchor, AppInterface, Button, Flexbox, GridBox, Label, LoadingSection, Section} from "../components";
 import {
     checkNullArr,
+    checkNullStr,
+    createTimeout,
     formatDateValue,
     getDefJsonValue,
     isBoolTrue,
     isJsonValueTrue,
+    limitStringWords,
     printError,
     printLog,
-    sendRequest,
-    setTabTitle,
-    limitStringWords,
     scrollToTop,
-    checkNullStr, createTimeout
+    sendRequest
 } from "../utils/AppUtils";
-import {CssVariant, GenRouteUrls, ModuleFieldsData, ModuleRouteUrls, Modules, ReqUrls} from "../config/AppConfig";
+import {CssVariant, GenRouteUrls, IsFormSubmissionDisabled, ModuleFieldsData, Modules, ReqUrls} from "../config/AppConfig";
 
 const FormsListPage = React.memo(() => {
     const TAG = "FormsListPage";
@@ -36,7 +36,7 @@ const FormsListPage = React.memo(() => {
         currRecord_deleteBtn_disabled: 'currRecord_deleteBtn_disabled',
     };
     const [fieldsData, setFieldsData] = useState({
-        [Fields.isDataLoading]:true,
+        [Fields.isDataLoading]: true,
     });
 
     useEffect(() => {
@@ -54,7 +54,7 @@ const FormsListPage = React.memo(() => {
     }, [getField(Fields.msgText)]);
 
     return (<AppInterface label={'Forms'}>
-        <LoadingPanel
+        <LoadingSection
             success={isFieldTrue(Fields.isDataSuccess)}
             loading={isFieldTrue(Fields.isDataLoading)}
             msg={getField(Fields.dataLoadingMsg)}
@@ -120,7 +120,7 @@ const FormsListPage = React.memo(() => {
                                             variant={'primary'}
                                             iconClass={'bi bi-pencil fs-sm pe-1'}
                                             text={'Edit'}
-                                            // ml={3}
+                                        // ml={3}
                                             disabled={recordDisabled}
                                             href={`${GenRouteUrls.formEdit.replace(':id', recordId)}`}
                                     />
@@ -135,7 +135,12 @@ const FormsListPage = React.memo(() => {
                                             disabled={recordDisabled}
                                             onClick={() => {
                                                 if (window.confirm("Are you sure you want to delete this record?")) {
-                                                    handleDeleteRecord(recordId);
+                                                    if (!IsFormSubmissionDisabled) {
+                                                        handleDeleteRecord(recordId);
+                                                    } else {
+                                                        updateField(Fields.currRecord_deleteId,recordId);
+                                                        panelMsg("This operation has been disabled for security reasons!",CssVariant.danger);
+                                                    }
                                                 }
                                             }}
                                     />

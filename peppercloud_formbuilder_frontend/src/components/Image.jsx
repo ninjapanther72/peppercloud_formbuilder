@@ -2,19 +2,19 @@ import React from 'react';
 import {isBoolTrue} from "../utils/AppUtils";
 
 const Image = React.memo(({
-                   className = "",
-                   wrapperClassName = "",
-                   src,
-                   objectFit = "cover",
-                   id,
-                   width,
-                   height,
-                   transition = true,
-                   disableDrag = false,
-                   style = {},
-                   wrapperStyle = {},
-                   ...rest
-               }) => {
+                              className = "",
+                              wrapperClassName = "",
+                              src,
+                              objectFit = "cover",
+                              id,
+                              width,
+                              height,
+                              transition = true,
+                              disableDrag = false,
+                              style = {},
+                              wrapperStyle = {},
+                              ...rest
+                          }) => {
     const TAG = "Image";
     return (<>
             <div className={`m-0x p-0 d-flex jc-center al-center ${wrapperClassName} ${isBoolTrue(disableDrag) ? 'select-none' : ''}`}

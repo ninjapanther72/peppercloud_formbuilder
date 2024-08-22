@@ -5,26 +5,26 @@ import {THEME} from "../config/AppConfig";
 
 /**Create a simple loader with single border*/
 const LoadingCircle = React.memo(({
-                                     wrapperClassName = "",
-                                     widthClass = "100",
-                                     className = "",
-                                     labelClassName = "",
-                                     sizeVariant = "",
-                                     variant = THEME,
-                                     size = "34px",
-                                     borderWidth = "5px",
-                                     labelFontSize = "13px",
-                                     wrapperHeight = "100%",
-                                     justifyAt = "center",
-                                     alignAt = "center",
-                                     label,
-                                     center = true,
-                                     showLabel = true,
-                                     show = false,
-                                     style = {},
-                                     wrapperStyle = {},
-                                     labelStyle = {},
-                                 }) => {
+                                      wrapperClassName = "",
+                                      widthClass = "100",
+                                      className = "",
+                                      labelClassName = "",
+                                      sizeVariant = "",
+                                      variant = THEME,
+                                      size = "34px",
+                                      borderWidth = "5px",
+                                      labelFontSize = "13px",
+                                      wrapperHeight = "100%",
+                                      justifyAt = "center",
+                                      alignAt = "center",
+                                      label,
+                                      center = true,
+                                      showLabel = true,
+                                      show = false,
+                                      style = {},
+                                      wrapperStyle = {},
+                                      labelStyle = {},
+                                  }) => {
     const TAG = "LoadingCircle";
 
     const [loaderSize, setLoaderSize] = useState(size);

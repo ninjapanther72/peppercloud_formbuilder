@@ -1,7 +1,8 @@
 export const AppName = "PepperCloud Form Builder";
 export const AppDateFormat = "DD-MMM-YYYY, hh:mm A";
 export const THEME = "primary";
-export const DebugOn = true;
+export const DebugOn = false;
+export const IsFormSubmissionDisabled = false;
 export const IsProd = true;
 export const BaseReqUrl = IsProd ? "https://peppercloud-formbuilder-backend.onrender.com" : "http://localhost:8030";
 
@@ -15,17 +16,6 @@ export const Modules = {
     FormView: "View Form",
 };
 
-export const ModuleRouteUrls = {
-    [Modules.Home]: '/',
-};
-
-export const GenRouteUrls = {
-    formCreate: '/form/create',
-    formView: '/form/:id',
-    formEdit: '/form/:id/edit',
-    _404: '*',
-};
-
 export const ReqUrls = {
     home__fetchForms: '/home-fetch-forms',
     form__viewPage_submitQResponses: '/form-view-page-submit-q-responses',
@@ -33,12 +23,6 @@ export const ReqUrls = {
     form__EditPage_fetchEditData: '/form-edit-page-fetch-edit-data',
     form__EditPage_submitData: '/form-edit-page-submit-data',
     form__viewPage_submitFormQsAnswers: '/form-view-page-submit-form-qs-answers',
-};
-
-export const Keys = {
-    theme: 'theme',
-    themeValues: 'themeValues',
-    browserUrl: 'browserUrl',
 };
 
 export const ModuleFieldsData = {
@@ -119,40 +103,6 @@ export const ModuleFieldsData = {
 
 };
 
-export const FORM_INPUT_TYPES = {
-    //Email, Text, Password, Number, date
-    email: "EMAIL",
-    text: "TEXT",
-    password: "PASSWORD",
-    number: "NUMBER",
-    date: "DATE",
-};
-
-/**
- * Represents a collection of essential message, error messages, date-formats etc.
- */
-export const Messages = {
-    invalidCredsMsg: "Invalid credentials!",
-    verifyErrMsg: "Verification failed, please try again",
-    verifySuccessMsg: "Verification successful, welcome back",
-    uploadErrMsg: "Couldn't save your data, please try again",
-    uploadImgErrMsg: "Couldn't save your images, please try again",
-    uploadSuccessMsg: "You data has been saved successfully",
-    recordDelete: "Record deleted",
-    recordDisable: "Record disabled",
-    recordEnabled: "Record Enabled",
-    recordDeleteFailed: "Couldn't delete the record, please try again!",
-    fetchSuccessMsg: "Successfully fetched your data",
-    fetchErrMsg: "Sorry! Couldn't retrieve data, please try again",
-    emailExistsMsg: "Email already exists",
-    serverErrorMsg: "Internal Server Error",
-    similarDataExistsMsg: 'Similar data already exists',
-    invalidEmailMsg: "Email has invalid domain",
-    unidentifiedEmailMsg: "Unidentified email",
-    sessionExpired: 'Session expired, please login again!',
-    sessionAuthFailed: 'Authentication failed! Please try again :(',
-    testDataReceived: 'Data received (for testing only)',
-}
 export const Constants = {
 
     YYYY_MM_DD_DASH: "YYYY-MM-DD",
@@ -167,6 +117,26 @@ export const Constants = {
 };
 //--------------Backend-Frontend common fields end-------------------------------
 
+export const FORM_INPUT_TYPES = {
+    //Email, Text, Password, Number, date
+    email: "EMAIL",
+    text: "TEXT",
+    password: "PASSWORD",
+    number: "NUMBER",
+    date: "DATE",
+};
+
+export const ModuleRouteUrls = {
+    [Modules.Home]: '/',
+};
+
+export const GenRouteUrls = {
+    formCreate: '/form/create',
+    formView: '/form/:id',
+    formEdit: '/form/:id/edit',
+    _404: '*',
+};
+
 export const CssVariant = {
     primary: 'primary',
     primaryDark: 'primaryDark',
@@ -178,21 +148,4 @@ export const CssVariant = {
     light: 'light',
     danger: 'danger',
     white: 'white',
-};
-export const FsVarVariant = {
-    XS: "var(--fs-xs)",
-    MD_XS: "var(--fs-md-xs)",
-    SM: "var(--fs-sm)",
-    MD_SM: "var(--fs-md-sm)",
-    NORMAL: "var(--fs-normal)",
-    MD: "var(--fs-md)",
-    SM_MD: "var(--fs-sm-md)",
-    MD_LG: "var(--fs-md-lg)",
-    LG: "var(--fs-lg)",
-    XL: "var(--fs-xl)",
-    XXL: "var(--fs-xxl)",
-    XXXL: "var(--fs-xxxl)",
-    XXXXL: "var(--fs-xxxxl)",
-    XXXXXL: "var(--fs-xxxxxl)",
-    XXXXXXL: "var(--fs-xxxxxxl)",
 };

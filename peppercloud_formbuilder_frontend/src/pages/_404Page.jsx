@@ -27,6 +27,7 @@ const _404Page = React.memo(() => {
                         className={'px-5 fs-xl fw-semi-bold'}
                         text={'Go to Home'}
                         sleek={true}
+                        variant={'primary'}
                         href={ModuleRouteUrls[Modules.Home]}
                     />
                 </div>

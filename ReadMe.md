@@ -101,10 +101,10 @@ This project is a full-stack MERN application that allows users to create, edit,
 5. View/Submit Form Page
 ![View/Submit Form Page](./project_images/view_form_page_gtr4e3wsdfgbhgfda.png)
 
-6. MongoDB Database - Forms Schema
+6. MongoDB Collection - Forms Schema
 ![MongoDB Database - Forms Schema](./project_images/pp_db_forms_sdfgt543werf.png)
 
-7. MongoDB Database - Form-Questions Schema
+7. MongoDB Collection - Form-Questions Schema
 ![MongoDB Database - Form-Questions Schema](./project_images/pp_db_form_qs_dft543ewrf.png)
 
 

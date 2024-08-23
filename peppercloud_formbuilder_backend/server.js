@@ -45,10 +45,6 @@ server.use(cookieParser());
 const TAG = "Server.js";
 const SERVER_PORT = process.env.SERVER_PORT;
 const INTERNAL_SERVER_ERR_MSG = Messages.serverErrorMsg;
-const FETCH_SUCCESS_MSG = Messages.fetchSuccessMsg;
-const FETCH_ERROR_MSG = Messages.fetchErrMsg;
-const UPLOAD_SUCCESS_MSG = Messages.uploadSuccessMsg;
-const UPLOAD_ERROR_MSG = Messages.uploadErrMsg;
 
 
 // Add url-watcher middleware for all routes

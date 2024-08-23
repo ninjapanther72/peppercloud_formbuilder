@@ -125,7 +125,7 @@ const Constants = {
 
 const DbCollections = {
     forms: 'forms_dummy',
-    formQs: 'form_questions',
+    formQs: 'form_questions_dummy',
 };
 
 /**

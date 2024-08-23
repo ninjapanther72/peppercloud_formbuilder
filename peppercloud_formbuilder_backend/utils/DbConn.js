@@ -18,7 +18,7 @@ async function getMongoDbCon() {
         await client.connect();
         const db = client.db(DB_CON_OPTIONS.dbName);
         printLog(fun, 'Connected to database');
-        return {client, db};
+        return {db, client};
     } catch (error) {
         printError(fun, 'Error connecting to database:', error);
         return {};

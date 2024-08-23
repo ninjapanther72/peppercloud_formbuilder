@@ -9,7 +9,7 @@ const {
     checkNullJson,
     printLog, printError,
     isJsonValueTrue, jsonToStr, checkNull, generateUniqueString, getArrLen, sortJsonList, sendResponse,
-    dropArrEmptyValues,
+    dropArrEmptyValues, storeJsonDataInTempFile,
 } = require("./utils/ServerUtils");
 const {Messages, DbCollections, ModuleFieldsData, Modules, ID_LEN} = require("./config/ServerConfig");
 const {} = require("./utils/ServerUtils");
@@ -29,15 +29,15 @@ const dbMethods = {};
  * Initialize a variable to store the MongoClient db-connection.
  * @type {Db}
  */
-let dbConn = null;
+let dbConn;
 
 /**
  * Initializes the {@link Db} instance if it hasn't been initialized already.
- *
  * @returns {Db} The {@link Db} instance.
  */
 async function checkDbConn() {
-    if (!checkNull(dbConn)) {
+    // if (!checkNull(dbConn)) {
+    if (!dbConn) {
         log('checkDbConn: connection established');
         const {db} = await getMongoDbCon();
         dbConn = db;
@@ -61,7 +61,7 @@ async function executeQuery({
                                 onError,
                             }) {
     const fun = "executeQuery:";
-    const manager = await checkDbConn();
+    await checkDbConn();
 
     printLog('\n', TAG, fun, 'collection:', collection, '|', "filterQuery:", (jsonToStr(filterQuery, 0) + '').substring(0, 500));
     return new Promise(async (resolve, reject) => {
@@ -81,6 +81,7 @@ async function executeQuery({
             return resolve(checkNullJson(result) ? result : defValue);
         } catch (e) {
             logErr(fun, e);
+            if (onError) onError(e);
             return resolve(e);
         }
     });

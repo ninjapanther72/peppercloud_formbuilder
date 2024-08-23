@@ -1,5 +1,5 @@
 const {
-    DebugOn,
+    DebugOn, IsProd,
 } = require("../config/ServerConfig");
 const fs = require("fs");
 const path = require("path");
@@ -15,9 +15,11 @@ function getDir(currDir = __dirname, dirName) {
 }
 
 function storeJsonDataInTempFile(jsonData) {
-    writeFile({
-        file: `${PUBLIC_DIR}/test/temp.json`, data: jsonToStr(jsonData, 4),
-    });
+    if (!IsProd) {
+        writeFile({
+            file: `${PUBLIC_DIR}/test/temp.json`, data: jsonToStr(jsonData, 4),
+        });
+    }
 }
 
 function sendResponse({

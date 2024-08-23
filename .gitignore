@@ -4,3 +4,4 @@ peppercloud_formbuilder_backend/.env
 
 # Local Netlify folder
 .netlify
+/node_modules
